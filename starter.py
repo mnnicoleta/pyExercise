@@ -1,15 +1,19 @@
-shop = [(x, y) for i in range(100) for x in ['shirt', 'scarf', 'glove', 'hat'] for y in ['S', 'M', 'L', 'XL', 'XXL']]
+#creating the shop
+shop = [(x, y) for i in range(100) for x in ['shirt', 'scarf', 'glove', 'hat'] for y in ['S', 'M', 'L', 'XL', 'XXL'] if x != y]
 shop.append(['SHIRT', 's'])
 print(shop)
 print('Total no of articles in the shop is =  ' + str(len(shop)))
+
+# remove last added item ['SHIRT', 's']
 shop.pop()
 print(shop)
 print(' after deleting last element - the size is: ' + str(len(shop)))
 
-shop.clear()
-# restock
+# able to remove any item
+shop.remove(('scarf', 'M'))
 
-shop = [(x, y) for i in range(200) for x in ['dress', 'pyjamas', 'skirt'] for y in ['S', 'M', 'L']]
-print(shop)
+# restock
+shop.append(('dress', 'S'))
+print('Last item added : ' + str(shop[len(shop)-1]))
 print('Articles in the shop after restock = ' + str(len(shop)))
 
