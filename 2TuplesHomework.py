@@ -1,12 +1,12 @@
 # 1. Write a python code to remove an element from a tuple.
-pizza = ('peperoni', ('pepperoni', 'motzzarella'), 28, 25.5)
+pizza = ('peperoni', ('pepperoni', 'mozzarella'), 28, 25.5)
 
 
-def del_element(tuple, element):
-    iterator = tuple.__iter__()
-    for i in range(len(tuple) - 1):
+def del_element(tuple2, element):
+    iterator = tuple2.__iter__()
+    for i in range(len(tuple2) - 1):
         if next(iterator) == element:
-            new_tuple = tuple[: i] + tuple[i + 1:]
+            new_tuple = tuple2[: i] + tuple2[i + 1:]
             return new_tuple
 
 
@@ -15,7 +15,7 @@ print(modified_pizza)
 
 # 2. Replace the last element in the list with the string 'last'
 # using list comprehension and tuples
-tupleList = ('peperoni', ('pepperoni', 'motzzarella'), 28, 25.5)
+tupleList = ('peperoni', ('pepperoni', 'mozzarella'), 28, 25.5)
 print(tupleList)
 print(type(tupleList))
 
@@ -23,9 +23,9 @@ tupleList = tupleList[:-1] + tuple(['last' for index, var in enumerate(tupleList
 print('New list is = ' + str(tupleList))
 
 # 3. Extract only the strings from the following list using list comprehension :
-slist = ['I', 'am', 1, 'list', 'of', 5, 'strings']
+list3 = ['I', 'am', 1, 'list', 'of', 5, 'strings']
 
-stringList = [x for x in slist if type(x) == str]
+stringList = [x for x in list3 if type(x) == str]
 print(stringList)
 
 # 4. Generate a 3 by 3 matrix that contains 'X' on the main diagonal and '_' in the rest.
