@@ -1,6 +1,9 @@
-#creating the shop
-shop = [(x, y) for i in range(20) for x in ['shirt', 'scarf', 'glove', 'hat'] for y in ['S', 'M', 'L', 'XL', 'XXL'] if x != y]
-shop.append(['SHIRT', 's'])
+# creating the shop
+from typing import Tuple
+
+shop = [(x, y) for i in range(20) for x in ['shirt', 'scarf', 'glove', 'hat'] for y in ['S', 'M', 'L', 'XL', 'XXL'] if
+        x != y]
+shop.append(('SHIRT', 's'))
 print(shop)
 print('Total no of articles in the shop is =  ' + str(len(shop)))
 
@@ -15,6 +18,5 @@ print(' size is: ' + str(len(shop)))
 
 # restock
 shop.append(('dress', 'S'))
-print('Last item added : ' + str(shop[len(shop)-1]))
+print('Last item added : ' + str(shop[len(shop) - 1]))
 print('Articles in the shop after restock = ' + str(len(shop)))
-
