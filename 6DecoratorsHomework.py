@@ -8,11 +8,16 @@
 # print(greet("World"))
 # >>> "GREETINGS WORLD!"
 
+
+
+
 # 2. Given the following function:
 # def divide(first_number, second_number):
 # return first_number / second_number
 # Create a decorator called safe_divide that will output a message if the division cannot be performed,
 # othervise it will return the result.
+
+
 
 
 # 3. Given a set of print methods:

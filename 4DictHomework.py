@@ -71,13 +71,12 @@ print(' 2018 = ' + str(health_index_2017_as_dict))
 # - one dict that groups all data by year for Germany
 #     germany = {2017: [sex, health_index]}
 health_index_2017_germany = {
-    year : [sex, health_index]
+    year: [sex, health_index]
     for country, year, sex, health_index in dataset
     if country == 'Germany'
 }
 print(len(health_index_2017_germany))
 print(' Germany = ' + str(health_index_2017_germany))
-
 
 # - one dict that groups all data by country and year, by using year in the
 # key together with the country name
@@ -87,7 +86,6 @@ dict_country_name = {
     for country, year, sex, health_index in dataset
 }
 print(dict_country_name)
-
 
 # - starting from the previous health_index dict, display only the data where the health_index >5
 for item in dict_country_name:

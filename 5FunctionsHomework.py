@@ -1,6 +1,5 @@
 description = ('Country', [
-    '2011 ', '2012 ', '2013 ', '2014 ', '2015 ', '2016 ', '2017 ', '2018 ',
-    '2019 '
+    '2011 ', '2012 ', '2013 ', '2014 ', '2015 ', '2016 ', '2017 ', '2018 ', '2019 '
 ])
 raw_data = [
     ('AL', [': ', ': ', ': ', ': ', ': ', ': ', ': ', '84 ', ': ']),
@@ -40,10 +39,11 @@ raw_data = [
     ('SI', ['73 ', '74 ', '76 ', '77 ', '78 ', '78 ', '82 ', '87 ', '89 ']),
     ('SK', ['71 ', '75 ', '78 ', '78 ', '79 ', '81 ', '81 ', '81 ', '82 ']),
     ('TR', [': ', '47 ', '49 ', '60 ', '70 ', '76 ', '81 ', '84 ', '88 ']),
-    12
     ('UK', ['83 ', '87 ', '88 ', '90 ', '91 ', '93 ', '94 ', '95 ', '96 ']),
-    ('XK', [': ', ': ', ': ', ': ', ': ', ': ', '89 ', '93 ', '93 ']),
+    ('XK', [': ', ': ', ': ', ': ', ': ', ': ', '89 ', '93 ', '93 '])
 ]
+
+
 # ': ' means that we don’t have data for that year.
 
 # Instructions: For the implementation it is required:
@@ -80,23 +80,122 @@ raw_data = [
 # }
 # ]
 # }
+
+# print(type(description))
+# print(type(raw_data))
+#
+# print(description[1])
+# print(raw_data[1][0])
+# for item in zip(description[1], raw_data[0][1]):
+#     if item[1] != ": ":
+#         print(item)
+# print(len(raw_data))
+
+
+def raw_data_to_dict(description2, raw_data2):
+    dict_to_return = {
+        country: [{
+            'year': year,
+            'coverage': coverage
+        }]
+        for i in range(len(raw_data2))
+        for country in [raw_data2[i][0]]
+        for year, coverage in zip(description2[1], raw_data2[i][1])
+        if coverage != ": "
+    }
+    return dict_to_return
+
+
+print(" First requirement ______________________")
+resultDict = raw_data_to_dict(description, raw_data)
+for key, value in resultDict.items():
+    print(key, ' : ', value)
+# print(type(resultDict))
+print('\n')
+
 # • function to retrieve data for each year
 # This function will take the dataset and year as an argument.
 # This function will return any type that you choose.
+# get_year_data(dataset, "2019")
+# >>> {'2019': [('Romania', 84), ('Germany', 95), ..., ('Latvia', 85)]}
+print(" Second requirement ______________________")
+
+
+# for key, value in resultDict.items():
+#     if '2019' in str(value):
+#         for key2, value2 in value[0].items():
+#             if key2 == 'coverage':
+#                 print(key, value2)
+
+# resDict = {}
+# for key, value in resultDict.items():
+#     countryVar = key
+#     countryDict = value[0]
+#     yearVar = countryDict['year']
+#     coverageVar = countryDict['coverage']
+#     print(countryVar, yearVar, coverageVar)
+
+
+def get_year_data_to_dict(result_dict2, year_param):
+    tuples_list = [(country2, coverage2)
+                   for country2, value3 in result_dict2.items()
+                   if year_param in str(value3)
+                   for secondKey, coverage2 in value[0].items()
+                   if secondKey == 'coverage'
+                   ]
+    dict_to_return = {year_param: tuples_list}
+    return dict_to_return
+
+
+resultDict3 = get_year_data_to_dict(resultDict, '2019')
+# print(resultDict3)
+for key, value in resultDict3.items():
+    print(key, ' : ', value)
+print('\n')
+
 # • function to retrieve data for each country
-# 13
 # This function will take the dataset and country as an argument.
 # This function will return any type that you choose.
+# get_country_data(dataset, "Romania")
+# >>> {'Romania': [('2019', 84), ('2018', 86), ..., ('2011', 72)]}
+print(" Third requirement ______________________")
+
+
+def get_country_data_to_dict(dataset, country_param):
+    tuples_list = [value3
+                   for country, value3 in dataset.items()
+                   if country_param == country
+                   for value3 in value3[0].values()
+                   ]
+    dict_to_return = {country_param: tuples_list}
+    return dict_to_return
+
+
+resultDict3 = get_country_data_to_dict(resultDict, 'RO')
+for key, value in resultDict3.items():
+    print(key, ' : ', value)
+
+print('\n')
+
 # • function to perform average from an iterable(of year data or country data)
 # This function will take an iterable as an argument.
 # This function will return a float.
-# Example of usage
-# get_year_data(dataset, "2019")
-# >>> {'2019': [('Romania', 84), ('Germany', 95), ..., ('Latvia', 85)]}
-# get_country_data(dataset, "Romania")
-# >>> {'Romania': [('2019', 84), ('2018', 86), ..., ('2011', 72)]}
 # country_data = get_country_data(dataset, "Romania")
 # perform_average(country_data['Romania'])
 # >>> 79.4
-# 14
+print(" Last requirement ______________________")
 
+def get_country_data_to_average(dataset, country_param):
+    tuples_list = [average
+                   for country, value3 in dataset.items()
+                   if country_param == country
+                   for key, value in value3[0].items()
+                   if key == 'coverage'
+                   ]
+    dict_to_return = {country_param: tuples_list}
+    return dict_to_return
+
+
+resultDict3 = get_country_data_to_dict(resultDict, 'RO')
+for key, value in resultDict3.items():
+    print(key, ' : ', value)

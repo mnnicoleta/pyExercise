@@ -1,8 +1,8 @@
 # creating the shop
 from typing import Tuple
 
-shop = [(x, y) for i in range(20) for x in ['shirt', 'scarf', 'glove', 'hat'] for y in ['S', 'M', 'L', 'XL', 'XXL'] if
-        x != y]
+shop = [(x, y) for i in range(20) for x in ['shirt', 'scarf', 'glove', 'hat'] for y in ['S', 'M', 'L', 'XL', 'XXL'] if x != y]
+print(len(shop))
 shop.append(('SHIRT', 's'))
 print(shop)
 print('Total no of articles in the shop is =  ' + str(len(shop)))
