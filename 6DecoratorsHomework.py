@@ -71,20 +71,6 @@ print('\n')
 # def say_goodbye(name):
 # return "Goodbye {}!".format(name)
 
-# Create a decorator called register that will update a list called print_registry with all the
-# decorated functions names.
-# print_registry = []
-# @register
-# def greet(name):
-# return "Greetings {}!".format(name)
-# def say_hello(name):
-# return "Hello {}!".format(name)
-# @register
-# def say_goodbye(name):
-# return "Goodbye {}!".format(name)
-# print(print_registry)
-# >>> ['greet', 'say_goodbye']
-
 print(" Third exercise______________________")
 
 print_registry = []
@@ -102,4 +88,33 @@ def say_goodbye(name):
     return "Goodbye {}!".format(name)
 
 
-print('\n')
+# Create a decorator called register that will update a list called print_registry with all the
+# decorated functions names.
+
+
+def register(func):
+    def wrapper(name):
+        print(func.__name__)
+        print_registry.append(func.__name__)
+    return wrapper
+
+
+@register
+def greet(name):
+    return "Greetings {}!".format(name)
+
+
+def say_hello(name):
+    return "Hello {}!".format(name)
+
+
+@register
+def say_goodbye(name):
+    return "Goodbye {}!".format(name)
+
+
+greet("hola")
+say_goodbye("zbye")
+print(say_goodbye.__name__)
+print(print_registry)
+
