@@ -1,3 +1,5 @@
+from numpy import average
+
 description = ('Country', [
     '2011 ', '2012 ', '2013 ', '2014 ', '2015 ', '2016 ', '2017 ', '2018 ', '2019 '
 ])
@@ -184,6 +186,7 @@ print('\n')
 # perform_average(country_data['Romania'])
 # >>> 79.4
 print(" Last requirement ______________________")
+
 
 def get_country_data_to_average(dataset, country_param):
     tuples_list = [average

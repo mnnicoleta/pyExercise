@@ -8,7 +8,28 @@
 # print(greet("World"))
 # >>> "GREETINGS WORLD!"
 
+print(" First exercise______________________")
 
+
+def uppercase(func):
+    def wrapper(name):
+        original_result = func(name)
+        modified_result = original_result.upper()
+        # print(f' modified_result =  {modified_result}')
+        return modified_result
+    return wrapper
+
+
+@uppercase
+def greet(name):
+    return "Greetings {}!".format(name)
+
+
+pretty = uppercase(greet("world"))
+
+print(greet("world"))
+
+print('\n')
 
 
 # 2. Given the following function:
@@ -17,8 +38,28 @@
 # Create a decorator called safe_divide that will output a message if the division cannot be performed,
 # othervise it will return the result.
 
+print(" Second exercise______________________")
 
 
+def safe_divide(func):
+    def wrapper(a, b):
+        if b == 0:
+            print(" Division by zero error")
+            return
+        return func(a, b)
+    return wrapper
+
+
+@safe_divide
+def divide(first_number, second_number):
+    return first_number / second_number
+
+
+print(divide(0, 0))
+print(divide(0, 1))
+print(divide(10, 2))
+
+print('\n')
 
 # 3. Given a set of print methods:
 # print_registry = []
@@ -41,3 +82,9 @@
 # return "Goodbye {}!".format(name)
 # print(print_registry)
 # >>> ['greet', 'say_goodbye']
+
+print(" Third exercise______________________")
+
+
+
+print('\n')
