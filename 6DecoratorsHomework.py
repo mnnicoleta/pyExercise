@@ -17,6 +17,7 @@ def uppercase(func):
         modified_result = original_result.upper()
         # print(f' modified_result =  {modified_result}')
         return modified_result
+
     return wrapper
 
 
@@ -30,7 +31,6 @@ pretty = uppercase(greet("world"))
 print(greet("world"))
 
 print('\n')
-
 
 # 2. Given the following function:
 # def divide(first_number, second_number):
@@ -47,6 +47,7 @@ def safe_divide(func):
             print(" Division by zero error")
             return
         return func(a, b)
+
     return wrapper
 
 
@@ -69,6 +70,7 @@ print('\n')
 # return "Hello {}!".format(name)
 # def say_goodbye(name):
 # return "Goodbye {}!".format(name)
+
 # Create a decorator called register that will update a list called print_registry with all the
 # decorated functions names.
 # print_registry = []
@@ -85,6 +87,19 @@ print('\n')
 
 print(" Third exercise______________________")
 
+print_registry = []
+
+
+def greet(name):
+    return "Greetings {}!".format(name)
+
+
+def say_hello(name):
+    return "Hello {}!".format(name)
+
+
+def say_goodbye(name):
+    return "Goodbye {}!".format(name)
 
 
 print('\n')

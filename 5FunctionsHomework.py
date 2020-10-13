@@ -164,12 +164,17 @@ print(" Third requirement ______________________")
 
 
 def get_country_data_to_dict(dataset, country_param):
-    tuples_list = [value3
-                   for country, value3 in dataset.items()
-                   if country_param == country
-                   for value3 in value3[0].values()
-                   ]
-    dict_to_return = {country_param: tuples_list}
+    # tuples_list = [value3
+    #                for country, value3 in dataset.items()
+    #                if country_param == country
+    #                for value3 in value3[0].values()
+    #                ]
+
+    tuples_list2 = [(year_coverage['year'], year_coverage['coverage']) for year_coverage in dataset[country_param]]
+    # coverage = valuesList[0]['coverage']
+    # dict_to_return = {country_param: coverage}
+
+    dict_to_return = {country_param: tuples_list2}
     return dict_to_return
 
 
@@ -199,6 +204,18 @@ def get_country_data_to_average(dataset, country_param):
     return dict_to_return
 
 
-resultDict3 = get_country_data_to_dict(resultDict, 'RO')
-for key, value in resultDict3.items():
-    print(key, ' : ', value)
+def get_country_data_to_average_curs(dataset, country):
+    total = 0
+    count = 0
+    list_param = get_country_data_to_dict(dataset, country)[country]
+    if len(list_param) == 1:
+        return list_param[0][1]
+    else:
+        for _, coverage in list_param:
+            total += coverage
+            count += 1
+
+    return total / count
+
+
+print(get_country_data_to_average_curs(resultDict, "RO"))
