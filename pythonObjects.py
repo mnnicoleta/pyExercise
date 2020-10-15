@@ -41,6 +41,16 @@ class Duck(Animal):
     def has_legs(self):
         return self.has_feet
 
+    def __repr__(self):
+        return f'Duck: {self.name} with colour {self.colour} and length {self.length} makes: {self.sound}'
+
+    def __str__(self):
+        return f'Duck: {self.name} with colour {self.colour} makes: {self.sound}'
+
+    @staticmethod
+    def print_welcome_message():
+        print('this is a static method')
+
 
 animal1 = Animal("ceceil", True, "yellow", 23, "ga-ga")
 animal1.makes_sound()
@@ -53,3 +63,7 @@ duck1.to_string()
 duck1 = Duck("ceceil2", True, "yellow", 23, "ga-ga-ga", True, 2, True, 25, False)
 duck1.makes_sound()
 duck1.to_string()
+
+duck1.print_welcome_message()
+print(repr(duck1))
+print(str(duck1))
