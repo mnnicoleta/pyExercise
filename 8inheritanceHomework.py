@@ -1,3 +1,4 @@
+# https://platforma.scoalainformala.ro/course/view.php?id=848
 # 6 Challenge:
 # We have new customers for our Polygons company.
 # • They need to create square objects with a certain area
