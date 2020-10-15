@@ -12,8 +12,8 @@ print(" First exercise______________________")
 
 
 def uppercase(func):
-    def wrapper(name):
-        original_result = func(name)
+    def wrapper(*args):  # name
+        original_result = func(args)  # name
         modified_result = original_result.upper()
         # print(f' modified_result =  {modified_result}')
         return modified_result
@@ -42,11 +42,11 @@ print(" Second exercise______________________")
 
 
 def safe_divide(func):
-    def wrapper(a, b):
-        if b == 0:
+    def wrapper(a, b):  # *args
+        if b == 0:  # args[1]
             print(" Division by zero error")
             return
-        return func(a, b)
+        return func(a, b)  # (args[0], args[1])
 
     return wrapper
 
@@ -93,10 +93,11 @@ def say_goodbye(name):
 
 
 def register(func):
-    def wrapper(name):
-        print(func.__name__)
-        print_registry.append(func.__name__)
-    return wrapper
+    # def wrapper(name):
+    #   print(func.__name__)
+    print_registry.append(func.__name__)
+    return func     # no need to call the function, to modify sth on it, so just need to return the func
+    #  return wrapper
 
 
 @register
@@ -117,4 +118,3 @@ greet("hola")
 say_goodbye("zbye")
 print(say_goodbye.__name__)
 print(print_registry)
-
