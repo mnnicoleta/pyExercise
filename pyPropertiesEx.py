@@ -40,8 +40,14 @@ joe = Student('Joe', 'Dow', 23)
 print(john.age)
 
 print(dir(john))
-print(john._Student__private)
+print(john.Student__private)
 
+x = 5
+y = 6.0
+t = 1
 
+z = type(x + y)(t)  # cast float(t)
+t2 = float(t)
 
-
+print(z)
+print(t2)
